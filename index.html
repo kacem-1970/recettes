@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>وصـفات جـزائريـة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .header-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px 40px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        header p {
+            font-size: 1.5em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .recipe-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.5s ease-in;
+        }
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        .recipe-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+        .recipe-content {
+            padding: 20px;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .recipe-card h3 {
+            color: #8B4513;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .recipe-card h4 {
+            color: #FF6B6B;
+            margin: 10px 0;
+        }
+        .ingredients {
+            background: #FFF5E6;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .instructions {
+            line-height: 1.6;
+            color: #4a5568;
+        }
+        .instructions ol {
+            margin-right: 20px;
+        }
+        .instructions li {
+            margin: 5px 0;
+        }
+        .cooking-time {
+            background: #FFE5CC;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .video-section {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .video-btn {
+            background: #8B4513;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        .video-btn:hover {
+            background: #A0522D;
+        }
+        .section-title {
+            grid-column: 1 / -1;
+            margin: 20px 0;
+            background: linear-gradient(45deg, #8B4513, #A0522D);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.8em;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .section-title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(139,69,19,0.6), rgba(160,82,45,0.6));
+            z-index: 0;
+        }
+        .section-title span {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://static.webteb.net/images/content/tbl_articles_article_22245_316b3d6f0fc-7d80-409f-8acc-38b15cc2ed54.jpg" 
+                 alt="وصفات جـزائريـة" 
+                 class="header-image">
+            <div class="header-content">
+                <h1>وصفات جـزائريـة</h1>
+                <p>اكتشف وصفاتنا التقليدية</p>
+            </div>
+        </header>
+
+        <main class="recipe-grid">
+            <!-- Carte Couscous -->
+            <div class="recipe-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcB3T78X8f6GdzsCZli4dJmjwWnfIw2Pv23w&s" alt="كسكس الملكي" class="recipe-image">
+                <div class="recipe-content">
+                    <h3>كسكس الملكي</h3>
+                    <div class="cooking-time">⏱️ مدة التحضير: 2ساعة و30 دقيقة</div>
+                    
+                    <h4>المكونات:</h4>
+                    <div class="ingredients">
+                        <p>• 1 كيلو سميد</p>
+                        <p>• 500 غرام لحم خروف</p>
+                        <p>• 500 غرام دجاج</p>
+                        <p>• 2 مرغيز</p>
+                        <p>• خضروات متنوعة</p>
+                        <p>• بهارات وباقة زهور</p>
+                    </div>
+
+                    <h4>التحضير:</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>طهي اللحم مع البهارات</li>
+                            <li>إضافة الخضروات تدريجياً</li>
+                            <li>تحضير السميد بشكل منفصل</li>
+                            <li>تقديمه في طبق كبير على شكل طبقات</li>
+                        </ol>
+                    </div>
+
+                    <div class="video-section">
+                        <a href="https://www.youtube.com/watch?v=Xg5eqxrp024" target="_blank" class="video-btn">
+                            🎥 شاهد الفيديو
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte Tajine -->
+            <div class="recipe-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTozuXYjc2VLnmYamDXoov1xY9UnaEINRmLIA&s" alt="طاجين لحم بالبرقوق" class="recipe-image">
+                <div class="recipe-content">
+                    <h3>طاجين لحم بالبرقوق</h3>
+                    <div class="cooking-time">⏱️ مدة التحضير: 2 ساعة</div>
+                    
+                    <h4>المكونات:</h4>
+                    <div class="ingredients">
+                        <p>• 1.5 كيلو كتف خروف</p>
+                        <p>• 500 غرام برقوق</p>
+                        <p>• 2 بصلة</p>
+                        <p>• لوز محمص</p>
+                        <p>• عسل وقرفة</p>
+                        <p>• زعفران وزنجبيل</p>
+                    </div>
+
+                    <h4>التحضير:</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>تحمير اللحم في الطاجين</li>
+                            <li>إضافة البصل والبهارات</li>
+                            <li>تركه يطهى لمدة ساعة و30 دقيقة</li>
+                            <li>إضافة البرقوق والعسل</li>
+                            <li>تزيينه باللوز</li>
+                        </ol>
+                    </div>
+
+                    <div class="video-section">
+                        <a href="https://www.youtube.com/watch?v=uomZtBsk06E" target="_blank" class="video-btn">
+                            🎥 شاهد الفيديو
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte Chorba -->
+            <div class="recipe-card">
+                <img src="https://www.lapetitecuisinedenat.com/wp-content/uploads/2023/01/chorba-frik-1024x683.jpg.webp" 
+                     alt="شوربة فريك" 
+                     class="recipe-image">
+                <div class="recipe-content">
+                    <h3>شوربة فريك</h3>
+                    <div class="cooking-time">⏱️ مدة التحضير: ساعة و30 دقيقة</div>
+                    
+                    <h4>المكونات:</h4>
+                    <div class="ingredients">
+                        <p>• 500 غرام لحم خروف</p>
+                        <p>• 200 غرام فريك</p>
+                        <p>• 2 بصلة</p>
+                        <p>• 3 طماطم</p>
+                        <p>• 2 جزرة</p>
+                        <p>• حفنة حمص</p>
+                        <p>• ملعقة معجون طماطم</p>
+                        <p>• كزبرة وبقدونس</p>
+                        <p>• بهارات: كركم، فلفل أسود، قرفة</p>
+                    </div>
+
+                    <h4>التحضير:</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>تحمير اللحم مع البصل</li>
+                            <li>إضافة الطماطم ومعجون الطماطم</li>
+                            <li>إضافة الجزر والحمص</li>
+                            <li>إضافة الفريك وتغطيته بالماء</li>
+                            <li>تركه يطهى ساعة على نار هادئة</li>
+                            <li>إضافة الكزبرة والبقدونس في نهاية الطهي</li>
+                        </ol>
+                    </div>
+
+                    <div class="video-section">
+                        <a href="https://www.youtube.com/watch?v=oJDzLPGv_FY" target="_blank" class="video-btn">
+                            🎥 شاهد الفيديو
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte M3kouda -->
+            <div class="recipe-card">
+                <img src="https://ma3lama.com/wp-content/uploads/2022/11/65ed71bcd0b8a.jpg.webp" 
+                     alt="المعقودة بالبطاطس" 
+                     class="recipe-image">
+                <div class="recipe-content">
+                    <h3>المعقودة بالبطاطس</h3>
+                    <div class="cooking-time">⏱️ مدة التحضير: ساعة</div>
+                    
+                    <h4>المكونات:</h4>
+                    <div class="ingredients">
+                        <p>• 500 غرام دقيق</p>
+                        <p>• 4 حبات بطاطس كبيرة</p>
+                        <p>• 2 بصلة</p>
+                        <p>• 3 فصوص ثوم</p>
+                        <p>• ملح وفلفل أسود</p>
+                        <p>• كمون وكزبرة</p>
+                        <p>• زيت </p>
+                        <p>• ماء دافئ للعجين</p>
+                    </div>
+
+                    <h4>التحضير:</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>تحضير العجينة بالماء الدافئ والملح</li>
+                            <li>سلق البطاطس وهرسها</li>
+                            <li>قلي البصل والثوم</li>
+                            <li>خلط البطاطس مع البصل والتوابل</li>
+                            <li>تشكيل العجين وحشوه بالحشوة</li>
+                            <li>قلي المعقودة في زيت ساخن</li>
+                        </ol>
+                    </div>
+
+                    <div class="video-section">
+                        <a href="https://www.youtube.com/watch?v=lG_4T_Dua-M" target="_blank" class="video-btn">
+                            🎥 شاهد الفيديو
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte Mtewem -->
+            <div class="recipe-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Mtewem.jpg" 
+                     alt="المثوم" 
+                     class="recipe-image">
+                <div class="recipe-content">
+                    <h3>المثوم</h3>
+                    <div class="cooking-time">⏱️ مدة التحضير: ساعة و15 دقيقة</div>
+                    
+                    <h4>المكونات:</h4>
+                    <div class="ingredients">
+                        <p>• 500 غرام لحم مفروم</p>
+                        <p>• رأس ثوم كامل</p>
+                        <p>• بيضتان</p>
+                        <p>• بقدونس مفروم</p>
+                        <p>• خبز أبيض منقوع</p>
+                        <p>• ملح وفلفل أسود</p>
+                        <p>• كمون</p>
+                        <p>• زيت للقلي</p>
+                    </div>
+
+                    <h4>التحضير:</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>هرس الثوم مع الملح والتوابل</li>
+                            <li>خلط اللحم المفروم مع الثوم والبقدونس</li>
+                            <li>إضافة البيض والخبز المنقوع</li>
+                            <li>تشكيل كرات صغيرة من الخليط</li>
+                            <li>قلي الكرات في زيت ساخن</li>
+                            <li>تقديمها ساخنة مع الصلصة</li>
+                        </ol>
+                    </div>
+
+                    <div class="video-section">
+                        <a href="https://www.youtube.com/watch?v=de9uYmzTbnk" target="_blank" class="video-btn">
+                            🎥 شاهد الفيديو
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte Rechta -->
+            <div class="recipe-card">
+                <img src="https://vid.alarabiya.net/images/2022/09/14/89be1d78-9bd6-4f28-a204-2b8b007f591e/89be1d78-9bd6-4f28-a204-2b8b007f591e_16x9_1200x676.jpg?width=801&format=jpg" 
+                     alt="الرشتة" 
+                     class="recipe-image">
+                <div class="recipe-content">
+                    <h3>الرشتة</h3>
+                    <div class="cooking-time">⏱️ مدة التحضير: ساعة و45 دقيقة</div>
+                    
+                    <h4>المكونات:</h4>
+                    <div class="ingredients">
+                        <p>• 500 غرام دقيق</p>
+                        <p>• 500 غرام لحم خروف</p>
+                        <p>• 2 بصلة</p>
+                        <p>• 2 جزر</p>
+                        <p>• حمص منقوع</p>
+                        <p>• لفت</p>
+                        <p>• كوسة</p>
+                        <p>• طماطم</p>
+                        <p>• فلفل حار</p>
+                        <p>• بهارات: كركم، فلفل أسود، كمون</p>
+                        <p>• ملح حسب الذوق</p>
+                    </div>
+
+                    <h4>التحضير:</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>تحضير عجينة الرشتة وتقطيعها</li>
+                            <li>تحضير المرق باللحم والبصل</li>
+                            <li>إضافة الخضروات والحمص</li>
+                            <li>إضافة البهارات والتوابل</li>
+                            <li>إضافة الرشتة للمرق</li>
+                            <li>الطهي حتى تنضج الرشتة</li>
+                        </ol>
+                    </div>
+
+                    <div class="video-section">
+                        <a href="https://www.youtube.com/watch?v=bZogUJ1WANU" target="_blank" class="video-btn">
+                            🎥 شاهد الفيديو
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Desserts -->
+            <div class="section-title">
+                <span>🍪 الحلويات التقليدية 🍪</span>
+            </div>
+
+            <!-- Carte Griwech -->
+            <div class="recipe-card">
+                <img src="https://img-global.cpcdn.com/recipes/4a4fdbcc5c4dba8e/300x426cq80/الصورة-الرئيسية-لوصفةقريوش-المحلات-الشباكية-الجزائري-الأصل.webp" 
+                     alt="قريوش" 
+                     class="recipe-image">
+                <div class="recipe-content">
+                    <h3>قريوش</h3>
+                    <div class="cooking-time">⏱️ مدة التحضير: ساعة</div>
+                    
+                    <h4>المكونات:</h4>
+                    <div class="ingredients">
+                        <p>• 500 غرام دقيق</p>
+                        <p>• 2 بيض</p>
+                        <p>• 50 غرام زبدة</p>
+                        <p>• ملعقة صغيرة خميرة</p>
+                        <p>• ماء الزهر</p>
+                        <p>• زيت للقلي</p>
+                        <p>• عسل للتزيين</p>
+                    </div>
+
+                    <h4>التحضير:</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>خلط المكونات وعجنها جيداً</li>
+                            <li>ترك العجين يرتاح 30 دقيقة</li>
+                            <li>تشكيل العجين وقطعه</li>
+                            <li>القلي في زيت ساخن</li>
+                            <li>غمس القطع في العسل</li>
+                        </ol>
+                    </div>
+
+                    <div class="video-section">
+                        <a href="https://www.youtube.com/watch?v=c_oDZOzNp8g" target="_blank" class="video-btn">
+                            🎥 شاهد الفيديو
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte Makrout -->
+            <div class="recipe-card">
+                <img src="https://360recettes.com/wp-content/uploads/2020/11/Polish_20201127_181241167-780x470.jpg" 
+                     alt="مقروط" 
+                     class="recipe-image">
+                <div class="recipe-content">
+                    <h3>مقروط</h3>
+                    <div class="cooking-time">⏱️ مدة التحضير: ساعة ونصف</div>
+                    
+                    <h4>المكونات:</h4>
+                    <div class="ingredients">
+                        <p>• 500 غرام سميد</p>
+                        <p>• 200 غرام تمر</p>
+                        <p>• 100 مل زيت </p>
+                        <p>• ماء الزهر</p>
+                        <p>• قرفة</p>
+                        <p>• زيت للقلي</p>
+                        <p>• عسل للتزيين</p>
+                    </div>
+
+                    <h4>التحضير:</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>خلط السميد مع زيت </li>
+                            <li>تحضير حشوة التمر</li>
+                            <li>تشكيل المقروط</li>
+                            <li>القلي في زيت ساخن</li>
+                            <li>غمس في العسل</li>
+                        </ol>
+                    </div>
+
+                    <div class="video-section">
+                        <a href="https://www.youtube.com/watch?v=P0AuGC2OVhE" target="_blank" class="video-btn">
+                            🎥 شاهد الفيديو
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte Sablé -->
+            <div class="recipe-card">
+                <img src="https://img-global.cpcdn.com/recipes/443034819e3e408a/300x426f0.500982_0.5_1.0q80/الصورة-الرئيسية-لوصفةصابلي-تقليدي-جزائري.webp" 
+                     alt="صابلي" 
+                     class="recipe-image">
+                <div class="recipe-content">
+                    <h3>صابلي</h3>
+                    <div class="cooking-time">⏱️ مدة التحضير: 45 دقيقة</div>
+                    
+                    <h4>المكونات:</h4>
+                    <div class="ingredients">
+                        <p>• 500 غرام دقيق</p>
+                        <p>• 250 غرام زبدة</p>
+                        <p>• 150 غرام سكر ناعم</p>
+                        <p>• 2 صفار البيض</p>
+                        <p>• فانيليا</p>
+                        <p>• مربى للتزيين</p>
+                    </div>
+
+                    <h4>التحضير:</h4>
+                    <div class="instructions">
+                        <ol>
+                            <li>خلط الزبدة مع السكر</li>
+                            <li>إضافة صفار البيض والفانيليا</li>
+                            <li>إضافة الدقيق تدريجياً</li>
+                            <li>تشكيل العجين</li>
+                            <li>الخبز في فرن متوسط الحرارة</li>
+                            <li>تزيين بالمربى</li>
+                        </ol>
+                    </div>
+
+                    <div class="video-section">
+                        <a href="https://www.youtube.com/watch?v=iTFjY0AtlAE" target="_blank" class="video-btn">
+                            🎥 شاهد الفيديو
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer style="text-align: center; padding: 20px;">
+            <img src="https://scontent.forn3-1.fna.fbcdn.net/v/t39.30808-6/515612920_24641889808744958_2688012341499513566_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=IBJzgI_IuU8Q7kNvwE6uzJc&_nc_oc=AdlCpZpwykUlRRKooKkBCYjr3RE0oj1WD8BdtZF4YTeU8CcNYNEJVabfKr2SFp7Ete0&_nc_zt=23&_nc_ht=scontent.forn3-1.fna&_nc_gid=PDzR_i9bB6SorFdMR0bIwA&oh=00_AfkuV9LxllMIMRjrtGFN-4tOyT8gHEPKI134LYcCsY1Lbg&oe=694CFA5C" 
+                 alt="شهية طيبة" 
+                 style="max-width: 50%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+        </footer>
+    </div>
+</body>
+</html>
